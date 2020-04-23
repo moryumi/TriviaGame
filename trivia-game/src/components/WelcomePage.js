@@ -13,7 +13,7 @@ class WelcomePage extends Component {
                 <img className="logo rounded mb-3" src={require("../images/quiz.png")} alt="logo"/>
                 <p> A TRIVIA GAME </p>
                
-                <Link to={`/question/${currentId}`}><button type="button" className="btn btn-primary btn-lg mt-5" style={{width:350}}>GET STARTED</button></Link>
+                <Link to={`/questions/${currentId}`}><button type="button" className="btn btn-primary btn-lg mt-5" style={{width:350}}>GET STARTED</button></Link>
                
             </div>
         ) 

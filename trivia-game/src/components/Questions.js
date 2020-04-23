@@ -27,7 +27,7 @@ class Questions extends Component {
                                         id={index+1}
                                         currentQuestion={question.question}
                                         correctAnswer={question.correct_answer}
-                                        incorrectAnswers={question.incorrect_answers[0],question.incorrect_answers[1],question.incorrect_answers[2]}
+                                        incorrectAnswers={question.incorrect_answers}
                                     />
                                 )   
                             })
