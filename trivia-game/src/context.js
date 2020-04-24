@@ -6,7 +6,8 @@ const reducer=(state,action)=>{
         case "CORRECT_ANSWER":
             return {
                 ...state,
-                id: action.payload.id+1
+                id: action.payload.id+1,
+                totalPoint: action.payload.totalPoint+100
             }
         case "WRONG_ANSWER":
             return {
@@ -20,7 +21,8 @@ export class UserProvider extends Component {
     state={
         questions:[],
         id:0,
-        isCorrect:false,
+        currentPoint:100,
+        totalPoint:100,
         loading: true,
         dispatch: action=>{
             this.setState(state=> reducer(state,action))
@@ -33,8 +35,6 @@ export class UserProvider extends Component {
         this.setState({ questions: data.results, loading: false });
       }
    
-  
-    
     render() {
         return (
             <UserContext.Provider value={this.state}>
@@ -44,5 +44,5 @@ export class UserProvider extends Component {
     }
 }
 
-const UserConsumer=UserContext.Consumer;  //value'yu kullanmak icin consumer olusturduk
-export default UserConsumer; // diger dosyalarda kullanmak icin export ediyosun
+const UserConsumer=UserContext.Consumer;  
+export default UserConsumer;

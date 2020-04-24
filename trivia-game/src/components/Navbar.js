@@ -1,31 +1,39 @@
 import React, { Component } from 'react'
+import UserConsumer from '../context';
 
 class Navbar extends Component {
     render() {
-        const{questionId}=this.props;
+       
         return (
+            <UserConsumer>
+                
+                {  value=>{
+                    const{id,totalPoint}=value;
+                    return(
+                        <nav className="navbar navbar-expand-lg bg-dark navbar-dark mb-5 p-3" >
+                        <div className="container ">
+        
+                           {/*  <div className="container">
+                            <a className="text-light" href="#">Joker</a>
+                            </div> */}
+                            <div className="container">
+                                 <a className="text-light">Question {id+1} / 10</a>
+                            </div>
+                            <div className="container">
+                                 <a className="text-light">{totalPoint} Points </a>
+                            </div>
+                            <div className="container">
+                                <a className="text-light">Remaining Time </a>
+                            </div>
+                            
+                        </div>
+                           
+                          
+                        </nav>
+                  )}
+                }
+            </UserConsumer> 
             
-            <nav className="navbar fixed-top navbar-expand-lg bg-dark navbar-dark mb-5 p-3" >
-                <div className="container ">
-
-                    <div className="container">
-                    <a className="text-light" href="#">Joker</a>
-                    </div>
-                    <div className="container">
-                         <a className="text-light">Question {questionId}/10</a>
-                    </div>
-                    <div className="container">
-                        <a className="text-light">Points </a>
-                    </div>
-                    <div className="container">
-                        <a className="text-light">Remaining Time </a>
-                    </div>
-                    
-                </div>
-                   
-                  
-                </nav>
-          
         )
     }
 }

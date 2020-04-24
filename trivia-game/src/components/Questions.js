@@ -11,7 +11,6 @@ class Questions extends Component {
             <UserConsumer>
             {  value=>{
                     const{questions}=value;
-                    var currentQuestion=0;
                     return(
                     <div>{
                             questions.map((question,index)=>{  
@@ -28,15 +27,13 @@ class Questions extends Component {
                                   
                                 ) } 
                                 else{
-
                                 }
                             })
                     }   
-                    </div>
-                    )
+                    </div>)
                 }
             }
-       </UserConsumer>
+            </UserConsumer>
         )
     }
 }

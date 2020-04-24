@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WelcomePage from './components/WelcomePage';
-import Question from './components/Question';
 import Questions from './components/Questions';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import CorrectAnswer from './components/CorrectAnswer';
@@ -14,7 +13,7 @@ function App() {
    
      <Router>
       <div className="App">
-   
+      
         <Route exact path="/" component={WelcomePage}/>
         
         <Route exact path="/questions/:id" component={Questions}/>
