@@ -10,11 +10,11 @@ class Questions extends Component {
         return (
             <UserConsumer>
             {  value=>{
-                    const{questions}=value;
+                    const{questions,id}=value;
                     return(
                     <div>{
                             questions.map((question,index)=>{  
-                                if(index==value.id){
+                                if(index==id){
                                     return (
                                     <Question 
                                         key={index}

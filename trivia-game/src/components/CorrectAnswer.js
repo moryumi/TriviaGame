@@ -9,7 +9,7 @@ class CorrectAnswer extends Component {
             <UserConsumer>
                 
                 {  value=>{
-                    const{currentPoint,totalPoint}=value;
+                    const{currentPoint,totalPoint,id}=value;
                     return(
                     <div>{
                         <div className="container">
@@ -17,7 +17,7 @@ class CorrectAnswer extends Component {
                             <p> Correct! </p>
                             <p> You have earned {currentPoint} points </p>
                             <p> Total : {totalPoint} points </p>
-                            {value.id==10 ? "Congratulations !!" :<Link to={`/questions/${value.id}`}><button type="button" className="btn btn-primary btn-lg mt-3" style={{width:350}}>Next Question</button></Link> }
+                            {id==10 ? "Congratulations !!" :<Link to={`/questions/${value.id}`}><button type="button" className="btn btn-primary btn-lg mt-3" style={{width:350}}>Next Question</button></Link> }
                         </div>
                         }   
                     </div>)}

@@ -1,3 +1,10 @@
+.customButton{
+  width: 60%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .logo{
   width: 20%;
   margin-right: auto;

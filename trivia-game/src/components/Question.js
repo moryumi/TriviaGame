@@ -48,11 +48,11 @@ class Question extends Component {
                             <div className="container"> 
                             <Navbar />
                                 <ul className="list-group mt-5">
-                                        <a className="mb-4"> {currentQuestion} </a> 
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary mb-3" type="button" value={correctAnswer}></input> 
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary mb-3" type="button" value={incorrectAnswers[0]}></input>
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary mb-3" type="button" value={incorrectAnswers[1]}></input>
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary mb-3" type="button" value={incorrectAnswers[2]}></input>
+                                        <p className="mb-4"> {currentQuestion} </p> 
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={correctAnswer}></input> 
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={incorrectAnswers[0]}></input>
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={incorrectAnswers[1]}></input>
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={incorrectAnswers[2]}></input>
                                         
                                     {/*  <button type="button" className="btn btn-outline-primary mb-2" > A: {correctAnswer} </button> 
                                         <button type="button" className="btn btn-outline-primary mb-2" > B: {incorrectAnswers[0]} </button> 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UserConsumer from '../context';
+import Timer from './Timer';
 
 class Navbar extends Component {
     render() {
@@ -23,7 +24,7 @@ class Navbar extends Component {
                                  <a className="text-light">{totalPoint} Points </a>
                             </div>
                             <div className="container">
-                                <a className="text-light">Remaining Time </a>
+                                <a className="text-light">Remaining Time <Timer/> </a>
                             </div>
                             
                         </div>
