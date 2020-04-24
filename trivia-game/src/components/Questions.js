@@ -3,41 +3,38 @@ import UserConsumer from '../context';
 import Navbar from './Navbar';
 import Question from './Question';
 
-var uniqid=require('uniqid');
-
-
 
 class Questions extends Component {
-  
+
     render() {
         return (
-           
             <UserConsumer>
-               
             {  value=>{
                     const{questions}=value;
+                    var currentQuestion=0;
                     return(
                     <div>{
-                        
-                            questions.map((question,index)=>{   
-                                return (
+                            questions.map((question,index)=>{  
+                                if(index==value.id){
+                                    return (
                                     <Question 
-                                       
-                                        key={index+1}
-                                        id={index+1}
+                                        key={index}
+                                        id={index}
                                         currentQuestion={question.question}
                                         correctAnswer={question.correct_answer}
                                         incorrectAnswers={question.incorrect_answers}
+                                        currentQuestionIndex={index}
                                     />
-                                )   
+                                  
+                                ) } 
+                                else{
+
+                                }
                             })
-                       
-                    }
-                                
-                        </div>
+                    }   
+                    </div>
                     )
                 }
-               
             }
        </UserConsumer>
         )

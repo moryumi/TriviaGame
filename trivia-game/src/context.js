@@ -2,23 +2,25 @@ import React, { Component } from 'react'
 const UserContext=React.createContext();
 
 const reducer=(state,action)=>{
-    /* switch(action.type){
-        case "DELETE_USER":
+      switch(action.type){
+        case "CORRECT_ANSWER":
             return {
                 ...state,
-                users: state.users.filter(user=> action.payload !== user.id)
+                id: action.payload.id+1
             }
-         case "ADD_USER":
-            return{
+        case "WRONG_ANSWER":
+            return {
                 ...state,
-                users: [...state.users,action.payload]
-            } 
-    } */
+                id: 0
+            }
+    }  
 }
 
 export class UserProvider extends Component {
     state={
         questions:[],
+        id:0,
+        isCorrect:false,
         loading: true,
         dispatch: action=>{
             this.setState(state=> reducer(state,action))

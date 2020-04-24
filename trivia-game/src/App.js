@@ -4,7 +4,7 @@ import './App.css';
 import WelcomePage from './components/WelcomePage';
 import Question from './components/Question';
 import Questions from './components/Questions';
-import {BrowserRouter as Router, Route,Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import CorrectAnswer from './components/CorrectAnswer';
 import WrongAnswer from './components/WrongAnswer';
 
