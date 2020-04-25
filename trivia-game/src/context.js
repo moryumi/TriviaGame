@@ -15,6 +15,12 @@ const reducer=(state,action)=>{
                 id: 0,
                 totalPoint:0
             }
+        case "TIME_IS_UP":
+            return {
+                ...state,
+                id: 0,
+                totalPoint:0
+            }
         case "JOKER_USED":
             return{
                 ...state,

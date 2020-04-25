@@ -21,7 +21,6 @@ class Question extends Component {
         //const{isCorrect}=this.state;
         const newQuestion={    
             id,
-            currentPoint:100,
             totalPointt:totalPoint
         }
         if(e.target.value==correctAnswer){
