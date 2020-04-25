@@ -4,14 +4,18 @@ import Navbar from './Navbar';
 import {withRouter} from 'react-router-dom';
 
 class Question extends Component {
-    
+    constructor(props) {
+        super(props);
+        this.getRandom(this);
+       }
+
     state={
-        isCorrect:false
+        isCorrect:false,
+        randomAnswer:[]
     }
 
     CheckAnswer=(dispatch,e)=>{
         const{correctAnswer,id}=this.props;
-        const{currentPoint,totalPoint,isCorrect}=this.state;
         const newQuestion={    
             id,
             currentPoint:100,
@@ -35,24 +39,45 @@ class Question extends Component {
         }
     }
 
+    getRandom=(e)=>{
+        const{randomAnswer}=this.state;
+        for (let index = 0; index < 4; index++) {
+            var rand=Math.floor(Math.random()*4);
+            while(randomAnswer.includes(rand))
+            {
+                rand=Math.floor(Math.random()*4);
+            }
+            this.setState({
+                randomAnswer: randomAnswer.push(rand)
+            })
+           
+        }
+       
+        console.log(randomAnswer);
+    }
+
+
+    
     render() {
-        const{id,currentQuestion,correctAnswer,incorrectAnswers,type,difficulty,category}=this.props;
-         
+        const{answers,id,currentQuestion,correctAnswer,incorrectAnswers,type,difficulty,category}=this.props;
+        const{randomAnswer}=this.state;
         return (
             <UserConsumer>
             {
                 value=>{
-                    const {dispatch}=value;
+                    const {questions,dispatch}=value;
                     return (
                        
                             <div className="container"> 
                             <Navbar />
+                            {}
                                 <ul className="list-group mt-5">
                                         <p className="mb-4"> {currentQuestion} </p> 
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={correctAnswer}></input> 
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={incorrectAnswers[0]}></input>
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={incorrectAnswers[1]}></input>
-                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={incorrectAnswers[2]}></input>
+                                       
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={answers[randomAnswer[0]]}></input> 
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={answers[randomAnswer[1]]}></input>
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={answers[randomAnswer[2]]}></input>
+                                        <input onClick={this.CheckAnswer.bind(this,dispatch)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={answers[randomAnswer[3]]}></input>
                                         
                                     {/*  <button type="button" className="btn btn-outline-primary mb-2" > A: {correctAnswer} </button> 
                                         <button type="button" className="btn btn-outline-primary mb-2" > B: {incorrectAnswers[0]} </button> 

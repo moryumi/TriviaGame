@@ -7,12 +7,17 @@ const reducer=(state,action)=>{
             return {
                 ...state,
                 id: action.payload.id+1,
-                totalPoint: action.payload.totalPoint+100
+                //totalPoint: action.payload.totalPoint+100
             }
         case "WRONG_ANSWER":
             return {
                 ...state,
                 id: 0
+            }
+        case "JOKER_USED":
+            return{
+                ...state,
+                isJokerUsed:action.payload.isJokerUsed
             }
     }  
 }
@@ -22,7 +27,8 @@ export class UserProvider extends Component {
         questions:[],
         id:0,
         currentPoint:100,
-        totalPoint:100,
+        totalPoint:0,
+        isJokerUsed:false,
         loading: true,
         dispatch: action=>{
             this.setState(state=> reducer(state,action))
