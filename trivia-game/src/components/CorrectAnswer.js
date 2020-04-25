@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
 import UserConsumer from '../context';
+import Navbar from './Navbar';
 
 class CorrectAnswer extends Component {
     render() {
       
         return (
             <UserConsumer>
-                
                 {  value=>{
                     const{currentPoint,totalPoint,id}=value;
                     return(
                     <div>{
                         <div className="container">
+                            <Navbar/>
                             <img className="logo rounded mb-3" style={{width:150}}src={require("../images/correct4.png")} alt="logo"/>
                             <p> Correct! </p>
                             <p> You have earned {currentPoint} points </p>
