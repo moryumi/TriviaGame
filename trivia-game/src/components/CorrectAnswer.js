@@ -13,7 +13,7 @@ class CorrectAnswer extends Component {
                     return(
                     <div>{
                         <div className="container">
-                            <Navbar/>
+                            <Navbar isCorrect={true}/>
                             <img className="logo rounded mb-3" style={{width:150}}src={require("../images/correct4.png")} alt="logo"/>
                             <p> Correct! </p>
                             <p> You have earned {currentPoint} points </p>

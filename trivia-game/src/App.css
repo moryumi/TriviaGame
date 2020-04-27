@@ -4,12 +4,15 @@
   margin-right: auto;
   margin-left: auto;
 }
+.navbar{
+  height: 120px;
+}
 
 .logo{
   width: 20%;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 13%;
+  margin-top: 8%;
   display: block;
 }
 

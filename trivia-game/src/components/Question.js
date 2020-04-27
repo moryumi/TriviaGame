@@ -12,9 +12,8 @@ class Question extends Component {
     state={
         randomAnswer:[],
         isJokerUsed:false,
-        isCorrect:false
+        //isCorrect:false
     }
-
 
     CheckAnswer=(dispatch,totalPoint,e)=>{
         const{correctAnswer,id}=this.props;
@@ -26,13 +25,12 @@ class Question extends Component {
         if(e.target.value==correctAnswer){
             console.log("true");
         
-            this.setState({
+           /*  this.setState({
                 isCorrect:true
-            }); 
+            });  */
           
             dispatch({type:"CORRECT_ANSWER", payload: newQuestion}); 
             this.props.history.push("/correctanswer")
-           
         }
         else{
             console.log("false");
@@ -44,8 +42,6 @@ class Question extends Component {
         }
     }
 
- 
-    
     getRandom=(e)=>{
         const{randomAnswer}=this.state;
         const{answers}=this.props;
@@ -88,7 +84,7 @@ class Question extends Component {
                             <Navbar />
                             <button type="button" onClick={this.jokerClicked.bind(this,dispatch)} className="btn btn-outline-warning btn-lg" disabled={isJokerUsed}><i className="fas fa-star-half"></i>JOKER </button>
                                 <ul className="list-group mt-4">
-                                        <p className="mb-4"> {currentQuestion} </p> 
+                                        <p className=" mb-5"> {currentQuestion} </p> 
                                        
                                         <input onClick={this.CheckAnswer.bind(this,dispatch,totalPoint)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={randomAnswer[0]}></input> 
                                         <input onClick={this.CheckAnswer.bind(this,dispatch,totalPoint)} className="btn btn-outline-primary btn-lg mb-3 customButton" type="button" value={randomAnswer[1]}></input>
@@ -102,9 +98,6 @@ class Question extends Component {
                                         
                                 </ul>
                             </div>
-                            
-                  
-                    
                     )
                 }
             }

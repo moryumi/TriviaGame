@@ -7,7 +7,7 @@ const reducer=(state,action)=>{
             return {
                 ...state,
                 id: action.payload.id+1,
-                totalPoint:action.payload.totalPointt+ 100
+                totalPoint:action.payload.totalPointt + state.currentPoint
             }
         case "WRONG_ANSWER":
             return {
