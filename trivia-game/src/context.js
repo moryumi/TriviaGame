@@ -6,8 +6,13 @@ const reducer=(state,action)=>{
         case "CORRECT_ANSWER":
             return {
                 ...state,
+              //  id: action.payload.id+1,
+                totalPoint:action.payload.totalPointt + 100
+            }
+        case "NEXT_QUESTION":
+            return {
+                ...state,
                 id: action.payload.id+1,
-                totalPoint:action.payload.totalPointt + state.currentPoint
             }
         case "WRONG_ANSWER":
             return {
@@ -24,8 +29,14 @@ const reducer=(state,action)=>{
         case "JOKER_USED":
             return{
                 ...state,
-                isJokerUsed:action.payload.isJokerUsed
+                isJokerUsed:true
             }
+          case "SELECTED":
+            return{
+                ...state,
+               // questions: state.questions.filter(question=> (action.payload.difficulty == question.difficulty && action.payload.category == question.category ))
+               isReRender:true
+            }  
     }  
 }
 
@@ -33,21 +44,40 @@ export class UserProvider extends Component {
     state={
         questions:[],
         id:0,
+        maxPoint:150,
         currentPoint:100,
         totalPoint:0,
-        isJokerUsed:false,
+        currentRemaningTime:0,
         loading: true,
+        difficulty:'',
+        category:'',
+        isSelected:false,
+        isReRender:false,
         dispatch: action=>{
             this.setState(state=> reducer(state,action))
         }
     }
+     /* async componentDidUpdate(prevProps, prevState) {
+      
+       if(prevState.isReRender !== this.state.isReRender){
+         console.log("component did update");
+        const url = "https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple";
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({ questions: data.results,isJokerUsed:false});
+       }
+        
+    }  */
+
+
     async componentDidMount() {
         const url = "https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({ questions: data.results, loading: false });
-      }
-   
+        this.setState({ questions: data.results});
+    } 
+    
+
     render() {
         return (
             <UserContext.Provider value={this.state}>

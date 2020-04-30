@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import UserConsumer from '../context';
 import Navbar from './Navbar';
 import {withRouter} from 'react-router-dom';
+import Timer from './Timer';
+//import 'regenerator-runtime/runtime';
 
 class Question extends Component {
     constructor(props) {
@@ -18,9 +20,11 @@ class Question extends Component {
     CheckAnswer=(dispatch,totalPoint,e)=>{
         const{correctAnswer,id}=this.props;
         //const{isCorrect}=this.state;
+       
         const newQuestion={    
             id,
-            totalPointt:totalPoint
+            totalPointt:totalPoint,
+            currentPointt:0
         }
         if(e.target.value==correctAnswer){
             console.log("true");
@@ -60,10 +64,11 @@ class Question extends Component {
        console.log(randomAnswer);
     }
 
-    jokerClicked=(dispatch,e)=>{
-        const{isJokerUsed,randomAnswer}=this.state;
-        this.setState({isJokerUsed:true})
-        const{incorrectAnswers}=this.props;
+    jokerClicked=(dispatch,isJokerUsed,e)=>{
+        console.log("joker clicked")
+      //  const{randomAnswer}=this.state;
+      //  this.setState({isJokerUsed:true})
+      //  const{incorrectAnswers}=this.props;
         const isJokerUsedO={
             isJokerUsed
         }
@@ -77,12 +82,12 @@ class Question extends Component {
             <UserConsumer>
             {
                 value=>{
-                    const {dispatch,isJokerUsed,totalPoint}=value;
+                    const {dispatch,isJokerUsed,totalPoint,currentPoint}=value;
                     return (
                        
                             <div className="container"> 
                             <Navbar />
-                            <button type="button" onClick={this.jokerClicked.bind(this,dispatch)} className="btn btn-outline-warning btn-lg" disabled={isJokerUsed}><i className="fas fa-star-half"></i>JOKER </button>
+                            <button type="button" onClick={this.jokerClicked.bind(this,dispatch,isJokerUsed)} className="btn btn-outline-warning btn-lg" disabled={isJokerUsed}><i className="fas fa-star-half"></i>JOKER </button>
                                 <ul className="list-group mt-4">
                                         <p className=" mb-5"> {currentQuestion} </p> 
                                        

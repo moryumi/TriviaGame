@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import UserConsumer from '../context';
 import Navbar from './Navbar';
 import Question from './Question';
-
+//import 'regenerator-runtime/runtime';
 
 class Questions extends Component {
 
@@ -25,7 +25,6 @@ class Questions extends Component {
                                         incorrectAnswers={question.incorrect_answers}
                                         currentQuestionIndex={index}
                                     />
-                                  
                                 ) } 
                                 else{
                                 }
